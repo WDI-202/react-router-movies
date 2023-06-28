@@ -2,10 +2,11 @@
 
 1. Set up a new React project: Create a new React project using Create React App.
 
-2. Install React Router: In your project directory, install React Router by running the following command:
+2. Create app with create-react-app: and install needed dependencies
 
    ```
    npx create-react-app .
+   npm i react-router-dom uuid
    ```
 
 3. Create a movie data source:
