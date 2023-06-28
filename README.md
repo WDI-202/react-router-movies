@@ -5,7 +5,7 @@
 2. Install React Router: In your project directory, install React Router by running the following command:
 
    ```
-   npm install react-router-dom
+   npx create-react-app .
    ```
 
 3. Create a movie data source:
