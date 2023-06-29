@@ -42,3 +42,74 @@
 8. Test and refine: Test your application to ensure that all CRUD operations are working correctly. Make any necessary refinements or improvements to the user interface or functionality.
 
 9. Style your application: Apply CSS styles or use a UI library like Bootstrap to enhance the visual appeal of your application.
+
+**Reminder**
+
+1. In index.js:
+
+- Import createBrowserRouter and RouterProvider from react-router-dom.
+
+  ```
+  import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+  ```
+
+- create router by using createBrowserRouter.
+- Create routes in array form:
+  ```
+  createBrowserRouter([
+     {
+        path: "",
+        element: <Component/>,
+        children:[
+           {
+              index: true,
+              element: <Component>
+           },
+           {
+              path: "",
+              element: <Component>
+           }
+        ]
+     },
+     ...Other routes
+  ])
+  ```
+- replace `<App/>` with `<RouterProvider router={router}/>`.
+- If you're want to use params remember to use `:<param variable name>` inside path.
+- If you want a children element to render first use `index: true` inside the children routes.
+
+2. In App.js:
+   -If you're using children inside the createBrowserRouter, remember to put `<Outlet/>` from react-router-dom inside the return.
+
+   ```
+   import {Outlet} from 'react-router-dom'
+   ```
+
+   -If App.js holds states that will be passed down as props to the children(from createBrowserRouter) remember to put `context ={{}}` and the props inside `<Outlet/>`.
+
+3. In App.js' children(from createBrowserRouter):
+   -If you're using the props passed in from `context={{}}`, remember to use `useOutletContext()` hooks from react-router-dom to get the props.
+
+   ```
+   import {useOutletContext} from 'react-router-dom'
+   const { props } = useOutletContext()
+   ```
+
+   -If you're using params use `useParams()` hooks from react-router-dom.
+
+   ```
+   import {useParams} from 'react-router-dom'
+   const { paramName } = useParams()
+   ```
+
+   -If you want to redirect use `useNavigate()` hooks from react-router-dom.
+
+   ```
+   import {useNavigate} from 'react-router-dom'
+   const navigate = useNavigate()
+   navigate('/routes)
+   ```
+
+4. If you're creating a NavBar:
+
+- use `<Link to="/routes"></Link>` component from react-router-dom.
